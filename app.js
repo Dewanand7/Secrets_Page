@@ -12,7 +12,13 @@ app.use(express.static('public'));    // eslint-disable-line no-unused-vars   no
 app.set('view engine', 'ejs');        // eslint-disable-line no-unused-vars no-unused-expressionSyntax errors
 app.use(bodyParser.urlencoded({extended: true}));         // eslint-disable-line no-unused-vars   no-unused-expressionSyntax Errors
 
-mongoose.connect('mongodb://localhost://localhost:27017/userDB', {useNewUrlParser: true});              // eslint-disable-line no-unused-vars no-unused-expressionSyntax errorsMap
+mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});              // eslint-disable-line no-unused-vars no-unused-expressionSyntax errorsMap
+const userSchema = {
+    email:String,
+    password:String
+};
+
+const user = new mongoose.model('user',userSchema)
 
 
 app.get('/', (req, res) => {
@@ -26,6 +32,24 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {    
         res.render('register')
     });
+
+
+app.post('/register', (req, res) => {
+    const newUser = new User({
+        email: req.body.username,
+        password: req.body.password
+    });
+
+    newUser.save((err) => {
+       if (err) {
+        console.log(err); 
+       }else {
+        res.render('Secrets');
+        
+       }
+    });
+}); //yahn par kahin bhul hai..
+
 
 
 
