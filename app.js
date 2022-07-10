@@ -48,7 +48,7 @@ app.post('/register', (req, res) => {
         
        }
     });
-}); //yahn par kahin bhul hai..
+});
 
 
 
