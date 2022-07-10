@@ -19,6 +19,7 @@ const userSchema = {
 };
 
 const user = new mongoose.model('user',userSchema)
+//gggg
 
 
 app.get('/', (req, res) => {
