@@ -15,12 +15,12 @@ app.use(bodyParser.urlencoded({extended: true}));         // eslint-disable-line
 
 mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});              // eslint-disable-line no-unused-vars no-unused-expressionSyntax errorsMap
 const userSchema = new mongoose.Schema({ 
-    email:String,
-    password:String
+    email: String ,
+    password: String
 });
 
-const secret = 'ELSALVADOR is a Password.';
-userSchema.plugin(encrypt,{ secret: secret , encryptedFields:['password'] });
+const secret = "ELSALVADORisaPassword."
+userSchema.plugin(encrypt,{ secret: secret , encryptedFields: ["password"] });
 
 const User = new mongoose.model('User',userSchema)
 //gggg
